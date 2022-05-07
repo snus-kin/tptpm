@@ -4,7 +4,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit";
 import NodeCache from "node-cache";
 
-const PORT = process.env.port || 3001;
+const PORT = process.env.port || 443;
 const twitterClient = new TwitterApi(process.env.TWITTEROAUTH2);
 const roClient = twitterClient.readOnly;
 

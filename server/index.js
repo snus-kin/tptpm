@@ -24,6 +24,9 @@ app.use(express.json());
 app.use(cors());
 app.use(limiter);
 
+// Enable CORS for all pre-flight reqs
+app.options("*", cors());
+
 app.post("/getTwitterID", async (req, res) => {
   console.log(`Recieved query for username: ${req.body.username}`);
   const errorObject = { error: `User ${req.body.username} does not exist` };

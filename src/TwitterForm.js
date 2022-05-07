@@ -6,7 +6,7 @@ import axios from "axios";
 
 const getTwitterID = async (data) => {
   const response = await axios.post(
-    "//ec2-54-85-138-123.compute-1.amazonaws.com/getTwitterID",
+    "https://ec2-54-85-138-123.compute-1.amazonaws.com/getTwitterID",
     {
       username: data,
     }

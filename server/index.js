@@ -1,4 +1,6 @@
 import { TwitterApi } from "twitter-api-v2";
+import https from "https";
+import fs from "fs";
 import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
@@ -48,6 +50,14 @@ app.post("/getTwitterID", async (req, res) => {
   return;
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync("./privatekey.pem"),
+      cert: fs.readFileSync("./server.crt"),
+    },
+    app
+  )
+  .listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });

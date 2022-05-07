@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { TwitterForm } from "./TwitterForm";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <h1>Twitter Public to Private Message Link Generator</h1>
+
+      <QueryClientProvider client={queryClient}>
+        <TwitterForm />
+      </QueryClientProvider>
+
+      <div className="about">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          The link produced by this website can be pasted in a tweet to create a
+          badge that directs people to message you.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+
+        <p>
+          I created this website as the feature is fairly obscure, and twitter 
+          direct you to download your entire twitter archive to get your ID.
+        </p>
+
+        <p>
+          As far as I know, this is the only official public-facing
+          documentation:
+        </p>
+        <a class="docuLink" href="https://business.twitter.com/en/help/campaign-editing-and-optimization/public-to-private-conversation.html">
+          Moving from a public Tweet to a private conversation
         </a>
-      </header>
-    </div>
+      </div>
+
+      <footer>
+        By <a href="https://twitter.com/sn_fk_n">@sn_fk_n</a>
+      </footer>
+    </>
   );
 }
 

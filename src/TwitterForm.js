@@ -5,12 +5,9 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import axios from "axios";
 
 const getTwitterID = async (data) => {
-  const response = await axios.post(
-    "https://ec2-54-85-138-123.compute-1.amazonaws.com/getTwitterID",
-    {
-      username: data,
-    }
-  );
+  const response = await axios.post("https://snufk.in:8443/getTwitterID", {
+    username: data,
+  });
   return response.data;
 };
 
@@ -54,9 +51,9 @@ export const TwitterForm = () => {
 
     if (message) {
       // add message parameter
-      params.set("message", message);
+      params.set("text", message);
     } else {
-      params.delete("message");
+      params.delete("text");
     }
 
     url.search = params.toString();
